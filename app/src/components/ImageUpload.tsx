@@ -8,7 +8,7 @@ type Props = {
 };
 
 function ImageUpload({ setImages }: Props) {
-    const [error, setError] = useState<String>("");
+    const [error, setError] = useState<string>("");
     const MAX_SIZE = 500 * 1024; // 500 KB
     
     const { getRootProps, getInputProps, open } = useDropzone({

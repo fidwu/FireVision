@@ -24,7 +24,7 @@ function Prediction({ images, previewRef }: Props) {
             block: 'nearest',
             inline: 'center'
         });
-    }, [images]);
+    }, [images, previewRef]);
 
     return (
         <>

@@ -46,17 +46,21 @@ function BatchResult({ images }: Props) {
             setBatchPrediction(data);
             setLoading(false);
         } catch (error) {
+            console.error(error);
             setError(true);
             setLoading(false);
         }
     };
 
     useEffect(() => {
-        if (!images || images.length === 0) {
-            return;
-        }
-        setNumImages(images.length);
-        getPrediction(images)
+        if (!images || images.length === 0) return;
+
+        const updateStateAndPredict = async () => {
+            setNumImages(images.length);
+            await getPrediction(images);
+        };
+
+        updateStateAndPredict();
     }, [images]);
 
     return (

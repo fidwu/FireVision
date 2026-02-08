@@ -23,16 +23,6 @@ function Result({ image }: Props) {
     const [error, setError] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
 
-    useEffect(() => {
-        if (!image) {
-            return;
-        } else {
-            URL.revokeObjectURL(image.preview);
-        }
-
-        getPrediction(image.file);
-    }, [image]);
-
     const getPrediction = async (file: File) => {
         setPrediction(null);
         setLoading(true);
@@ -50,6 +40,7 @@ function Result({ image }: Props) {
             setPrediction(data);
             setLoading(false);
         } catch (error) {
+            console.log(error);
             setError(true);
         }
     };
@@ -66,6 +57,18 @@ function Result({ image }: Props) {
                 return "";
         }
     };
+
+    useEffect(() => {
+        if (!image) return;
+
+        URL.revokeObjectURL(image.preview);
+
+        const fetchPrediction = async () => {
+            await getPrediction(image.file);
+        };
+
+        fetchPrediction();
+    }, [image]);
 
     return (
         <div>
