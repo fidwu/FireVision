@@ -1,4 +1,7 @@
 # FireVision: Fire, Smoke, and Non fire Classifier
+
+[Live Demo](https://firevision.vercel.app/)
+
 ## Problem Statement
 Wildfires and accidental fires cause significant damage to lives, property, and the environment. Early detection of fire and smoke through automated image classification can dramatically improve response times and reduce damage. However, differentiating between fire, smoke, and non-hazardous scenes in images is challenging due to differences in lighting conditions and backgrounds.
 <br><br>
