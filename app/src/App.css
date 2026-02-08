@@ -1,0 +1,181 @@
+#root {
+  max-width: 1280px;
+  width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.image-upload-container, .preview-result, .sample-images-grid {
+  margin-bottom: 50px;
+}
+
+.image-upload-container .upload, .result.border {
+  border: 2px dashed #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.image-upload-container .error {
+  color: red;
+  margin: 15px 0 0;
+}
+
+.preview img {
+  width: 100%;
+  height: auto;
+  max-height: 275px;
+  object-fit: cover;
+}
+
+.preview-result {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+  grid-gap: 20px;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+  }
+}
+
+.preview, .result {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 15px;
+}
+
+.result {
+  width: 100%;
+}
+
+.result.border {
+  border: 2px solid #ccc;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.2);
+}
+
+.result.fire {
+  border-color: red;
+}
+
+.result.non_fire {
+  border-color: green;
+}
+
+.result.smoke {
+  border-color: #777777;
+}
+
+.result .prediction {
+  font-weight: 600;
+  padding: 7px 15px;
+  border-radius: 30px;
+}
+
+.result.fire .prediction {
+  background: #F9735D;
+}
+
+.result.smoke .prediction {
+  background: #777777;
+  color: #fff;
+}
+
+.result.non_fire .prediction {
+  background:  #8BC1A1;
+}
+
+.result .probabilities {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-gap: 10px;
+  max-width: 375px;
+}
+
+.result .probability-bar {
+  display: flex;
+  grid-gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.result .probability-bar .bar {
+  background-color: #ddd;
+  height: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.result .probability-bar .bar-filled {
+  background-color: green;
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.result .probability-bar .label {
+  min-width: 60px;
+  font-size: 14px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.result .probability-value {
+  font-size: 12px;
+  color: #555;
+  min-width: 60px;
+  text-align: left;
+}
+
+.sample-images-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  grid-gap: 25px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1025px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.sample-image {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 15px;
+  align-items: center;
+  background-color: #F8F8F8;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.sample-image img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
+
+.link-button:hover {
+  color: darkblue;
+}

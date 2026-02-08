@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  backend:
+    name: Backend (Python)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+      - name: Install backend dependencies with uv sync
+        run: |
+          uv venv .venv
+          source .venv/bin/activate
+          uv sync --dev --locked
+
+      - name: Run ruff lint check
+        run: |
+          source .venv/bin/activate
+          ruff check .
+
+  frontend:
+    name: Frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Build frontend
+        run: npm run build
